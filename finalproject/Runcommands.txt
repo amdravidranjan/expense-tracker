@@ -1,0 +1,19 @@
+domain compilation (must succeed):
+
+javac -d bin/domain --module-source-path src -m domain
+
+
+service compilation (must succeed):
+
+javac -d bin/service --module-source-path src --module-path bin -m service
+
+ui compilation:
+
+
+javac --module-path "bin;%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml,javafx.graphics -d bin/ui --module-source-path src -m ui
+
+Run Command:
+
+set PATH_TO_FX=C:\javafx-sdk-21.0.8\javafx-sdk-21.0.8\lib
+
+java --module-path "bin\ui;bin\service;bin\domain;%PATH_TO_FX%" --add-modules javafx.controls,javafx.fxml,javafx.graphics -m ui/com.expensetracker.ui.controller.CombinedApp
